@@ -3,7 +3,10 @@
       <div class="navcard">
         <div class="navcardinner">
 
-          <Menupoint v-bind:point="pointMenu" menuexposed="true"></Menupoint>
+          <Menupoint v-bind:point="pointMenu" 
+            v-bind:menuexposed="menuExposed" 
+            v-on:click.native="btnMenu()">
+          </Menupoint>
 
           <div class="menulayer">
             <div><input type="search" id="search"><input type="submit" value="SEARCH" id="searchbtn"></div>
@@ -12,8 +15,8 @@
           <Menupoint v-for="apoint in this.$store.state.pages"
                      v-bind:point="apoint"
                      v-bind:key="apoint.id"
-                     v-on:click="showPage(apoint)"
-                     menuexposed="true">
+                     v-on:click.native="showPage(apoint)"
+                     v-bind:menuexposed="menuExposed">
           </Menupoint>
 
         </div>
@@ -26,6 +29,7 @@ import Menupoint from '../components/Menupoint.vue'
 
 export default {
   name: 'Navcard',
+  props: ['menuExposed'],
   data: function () { return {
 
     pointMenu: {
@@ -43,8 +47,12 @@ export default {
 
     showPage: function(page) {
 
-      this.$store.commit('setCurrentArticle', page);
+      this.$router.push({ name: 'page', params: { id : page.id } })
 
+    },
+    btnMenu: function() {
+
+      this.$store.commit('toggleMenuExposure')
     }
   }
 }

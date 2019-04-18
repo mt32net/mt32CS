@@ -9,7 +9,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
 
-    currentPage: null,
+    menuExposed: true,
     pages: [],
     articles: []
   },
@@ -21,9 +21,10 @@ export default new Vuex.Store({
 
       state.articles = articles;
     },
-    setCurrentPage(state, page) {
+    toggleMenuExposure(state) {
 
-      state.currentPage = page;
+      if (state.menuExposed) state.menuExposed = false;
+      else state.menuExposed = true;
     }
   },
   actions: {
@@ -52,6 +53,7 @@ export default new Vuex.Store({
         query: gql`
         query {
           articles {
+            id,
             title,
             content
           }
@@ -59,7 +61,7 @@ export default new Vuex.Store({
         `
       })
 
-      context.commit('updatePages', response.data.pages)
+      context.commit('updateArticles', response.data.articles)
     }
   }
 })

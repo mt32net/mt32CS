@@ -2,9 +2,9 @@
   <!-- The gridded Viwe -->
   <div id="contdiv">
 
-    <Navcard></Navcard>
+    <Navcard v-bind:menuExposed="true"></Navcard>
 
-    <Card v-for="card in articles"
+    <Card v-for="card in this.$store.state.articles"
       v-bind:key="card.id"
       v-bind:card="card">
     </Card>
@@ -18,12 +18,6 @@ import Card from '../components/Card.vue'
 
 export default {
   name: 'Grid',
-  data: function () { return {
-
-    articles: this.$store.state.articles,
-    pointMenu: ""
-
-  }},
   components: {
 
     Navcard,
@@ -32,6 +26,7 @@ export default {
   async created() {
 
     await this.$store.dispatch('loadPages')
+    await this.$store.dispatch('loadArticles')
   }
 }
 </script>

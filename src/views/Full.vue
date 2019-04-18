@@ -26,6 +26,9 @@
 <script>
 import Navcard from '../components/Navcard.vue'
 
+import apollo from '../apolloClient'
+import gql from 'graphql-tag'
+
 export default {
 
   name: 'Full',
@@ -35,10 +38,54 @@ export default {
   },
   data: function () { return {
 
-    page: this.$store.state.currentPage
+    page: {
 
-  }}
+      title: 'DEBUG',
+      content: 'DEBUG'
+    }
 
+  }},
+  async created() {
+
+    if (this.$router.currentRoute.name == 'article') {
+
+      const response = await apollo.query({
+
+        query: gql`
+        query GetArticle($id: ID!){
+          article(id: $id) {
+            title,
+            content
+          }
+        }
+        `,
+        variables: {
+          id: this.$route.params.id
+        }
+      })
+
+      this.page = response.data.article;
+
+    } else {
+
+      const response = await apollo.query({
+
+        query: gql`
+        query GetPage($id: ID!){
+          page(id: $id) {
+            title,
+            content
+          }
+        }
+        `,
+        variables: {
+          id: this.$route.params.id
+        }
+      })
+
+      this.page = response.data.page;
+    }
+  }
 }
 </script>
 

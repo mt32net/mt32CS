@@ -15,7 +15,12 @@ export default new Router({
       component: Grid
     },
     {
-      path: '/article',
+      path: '/page/:id',
+      name: 'page',
+      component: Full
+    },
+    {
+      path: '/article/:id',
       name: 'article',
       component: Full
     }

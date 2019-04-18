@@ -5,7 +5,7 @@
         <div class="cardup">
           <div>
             <div class="cardheader"
-                 v-on:click="$emit('exec', card)">
+                 v-on:click="setArticle(card)">
                     {{ card.title }}
             </div>
             <div class="cardcontent" v-html="card.content"></div>
@@ -25,7 +25,14 @@
 export default {
 
   name: 'Card',
-  props: ['card']
+  props: ['card'],
+  methods: {
+
+    setArticle: function(page) {
+
+        this.$router.push({ name: 'article', params: { id : page.id } })
+    }
+  }
 }
 </script>
 
