@@ -1,5 +1,5 @@
 {
-  "name": "hello-world",
+  "name": "mt32.net",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
   "dependencies": {
     "apollo-boost": "^0.3.1",
     "core-js": "^2.6.9",
-    "strapi-sdk-javascript": "^0.3.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.7",
     "vuex": "^3.1.1"
