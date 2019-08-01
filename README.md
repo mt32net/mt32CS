@@ -28,6 +28,10 @@ Make shure you have [Node.js](https://nodejs.org/en/) installed.
 #### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+## Support
+
+Contact me via Discord: ```M'Torials#2249```
+
 ## Credits and Dependencies
 
 See the package.json for a detailed list of dependencies, but special thanks to following projects:
