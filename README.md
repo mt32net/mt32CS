@@ -4,7 +4,7 @@
 
 This is a frontend web application build with Vue.js build to run as a web site. The goal of this project is to create a nice looking, efficient, flexible and intuitive interface, with it's help it's easy to present helpful and intersting content. 
 
-This website is written out of personal need for it, but feel free to use it yourself or fork it, as long as you give credit.
+This website is written out of personal need, but feel free to use it yourself or fork it, as long as you give credit.
 
 ## Installation
 
@@ -36,7 +36,7 @@ See the package.json for a detailed list of dependencies, but special thanks to 
   * Vuex
   * VueRouter
   * Vue CLI
-* CSS [Icon pack](https://cssicon.space/#/)
+* CSS [Icon pack](https://cssicon.space/#/) by [wentin](https://twitter.com/DesignJokes)
 ## License
 
 [GNU GPL v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
