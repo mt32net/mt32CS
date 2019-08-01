@@ -1,8 +1,10 @@
 # mt32.net - Frontend
 
+This is a frontend web application build with Vue.js build to run as a web site. The goal of this project is to create a nice looking, efficient, flexible and intuitive interface, with it's help it's easy to present helpful and intersting content. 
+
 ## About
 
-This is a frontend web application build with Vue.js build to run as a web site. The goal of this project is to create a nice looking, efficient, flexible and intuitive interface, with it's help it's easy to present helpful and intersting content. 
+Please note that this is just the frontent. This piece of software will only display content it gets via a specified [GraphQL](https://graphql.org/).
 
 This website is written out of personal need, but feel free to use it yourself or fork it, as long as you give credit.
 
