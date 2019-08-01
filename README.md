@@ -8,6 +8,29 @@ Please note that this is just the frontent. This piece of software will only dis
 
 This website is written out of personal need, but feel free to use it yourself or fork it, as long as you give credit.
 
+## API and backend
+
+### The GraphQL API
+
+[GraphQL](https://graphql.org/) is an alternative to the common RESTful APIs. The big difference is: You get what you want, nothing more and nothing less. Because of these great advantag and some other cool stuff you can do with GraphQL I decided to choose it over REST.
+
+### A headless CMS
+
+I wanted to use a headless CMS togther with this frontend. Such a CMS features only an API and an admin interface, so it's easy to manage content for a website.
+
+My contitions are:
+* GraphQL API (of course)
+* self hosted/open source
+* stable
+
+It's not easy to find a matching and properly functioning CMS.
+
+## How to use?
+
+You have to decide for a backend, that features an GraphQL API. But you can/must also change the code to make it compatible.
+
+Maybe I will release another piece of software related to the mt32.net project, that handles this problem.
+
 ## Installation
 
 Make shure you have [Node.js](https://nodejs.org/en/) installed.
