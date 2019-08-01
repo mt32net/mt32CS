@@ -11,6 +11,7 @@ This website is written out of personal need, but feel free to use it yourself o
 ## Installation
 
 Make shure you have [Node.js](https://nodejs.org/en/) installed.
+You have to run all this commands in the project directory!
 
 #### Project setup
 ```npm install```
