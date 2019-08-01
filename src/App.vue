@@ -91,10 +91,10 @@ export default {
 
   #footer {
 
-    display: none;
-    grid-row-start: 3;
+    display: inline-grid;
+    grid-row-start: 5;
     grid-column: 1 / span 3;
-}
+  }
   #footdiv {
 
     display: block;
