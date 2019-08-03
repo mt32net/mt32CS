@@ -5,7 +5,6 @@
       <div class="side">
         <Navcard menuExposed="false" v-bind:grid="false"></Navcard>
         <div class="underside">
-          <h2>comments</h2>
         </div>
       </div>
       <div class="contentcard2">
