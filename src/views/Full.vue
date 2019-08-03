@@ -50,15 +50,27 @@ export default {
     }
 
   }},
+  methods: {
+    update: async function () {
+      await this.$store.dispatch('loadPages')
+      const id = this.$route.params.id
+      if (this.$router.currentRoute.name == 'post') {
+        this.page = await api.getPost(id)
+
+      } else {
+        this.page = await api.getPage(id)
+      }
+    }
+  },
   async created() {
 
-    await this.$store.dispatch('loadPages')
-    const id = this.$route.params.id
-    if (this.$router.currentRoute.name == 'post') {
-      this.page = await api.getPost(id)
+    this.update();
+  },
+  watch: {
 
-    } else {
-      this.page = await api.getPage(id)
+    '$route' () {
+
+      this.update();
     }
   }
 }

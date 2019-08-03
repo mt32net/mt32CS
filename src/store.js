@@ -10,7 +10,23 @@ export default new Vuex.Store({
 
     menuExposed: true,
     pages: [],
-    posts: []
+    posts: [],
+    // Not in use
+    currentArticle: {
+      id: 0,
+      article: {
+        title: '',
+        content: ''
+      },
+      tags: [
+        {
+          name: ''
+        },
+        {
+          name: ''
+        }
+      ]
+    }
   },
   mutations: {
     updatePages(state, pages) {
