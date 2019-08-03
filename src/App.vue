@@ -8,6 +8,14 @@
     </div>
     <footer id="footer">
       <div id="footdiv">
+        <div id="footright">
+          <br/>
+          <br/>
+          <br/>
+          developed by m'torials<br/>
+          <a href="http://mtorials.de/">website</a><br/>
+          <a href="https://github.com/mtorials">github</a>
+        </div>
         <div>
         CREDITS<br/><br/>
           <a href="https://cssicon.space/#/" target="_blank">Icons by wantin</a><br/>
@@ -15,7 +23,6 @@
         </div>
 
         <br/>
-
         <div>
           <a>v0.1.2</a>
         </div>
@@ -28,22 +35,12 @@
 import Header from './components/Header.vue'
 import Subheader from './components/Subheader.vue'
 
-import gql from 'graphql-tag'
-
 export default {
   name: 'App',
   components: {
 
     Header,
     Subheader
-  },
-  apollo: {
-    hello: gql`query {
-      articles {
-
-        title
-      }
-    }`
   }
 }
 </script>
@@ -53,15 +50,19 @@ export default {
 
   * {
 
-    text-decoration: none;
-    color: @cl-text;
     font-family: 'Inconsolata', monospace;
+  }
+
+  a {
+    color: white;
   }
 
   body {
 
     padding: 0;
     margin: 0;
+
+    color: @cl-text;
 
     background-color: dimgrey;
   }
@@ -101,5 +102,9 @@ export default {
     padding: 30px;
 
     background-color: @cl-bg;
+  }
+  #footright {
+    float: right;
+    text-align: right;
   }
 </style>

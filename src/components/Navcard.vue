@@ -1,6 +1,6 @@
 <template>
 
-      <div class="navcard">
+      <div v-bind:class="{ grid: grid }" class="navcard">
         <div class="navcardinner">
 
           <Menupoint v-bind:point="pointMenu" 
@@ -8,8 +8,12 @@
             v-on:click.native="btnMenu()">
           </Menupoint>
 
-          <div class="menulayer">
+          <div class="menulayer" v-if="menuExposed">
             <div><input type="search" id="search"><input type="submit" value="SEARCH" id="searchbtn"></div>
+          </div>
+
+          <div class="menulayer" v-else>
+            <div><input type="submit" value="SEARCH" id="searchbtn"></div>
           </div>
 
           <Menupoint v-for="apoint in this.$store.state.pages"
@@ -29,12 +33,14 @@ import Menupoint from '../components/Menupoint.vue'
 
 export default {
   name: 'Navcard',
-  props: ['menuExposed'],
+  props: ['menuExposed', 'grid'],
   data: function () { return {
 
     pointMenu: {
 
-      title: 'Menu',
+      article: {
+        title: 'Menu'
+      },
       icon: 'menu',
     }
 
@@ -63,13 +69,15 @@ export default {
   @import '../../src/config.less';
   @import '../../src/assets/icons.less';
 
-  .navcard {
+.navcard {
 
+  padding: 2%;
+}
+.grid {
+  
   display: inline-grid;
   grid-row-start: 1;
   grid-row-end: 3;
-
-  padding: 2%;
 }
   .navcardinner{
 

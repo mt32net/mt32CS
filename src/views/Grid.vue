@@ -2,9 +2,9 @@
   <!-- The gridded Viwe -->
   <div id="contdiv">
 
-    <Navcard v-bind:menuExposed="true"></Navcard>
+    <Navcard v-bind:menuExposed="true" v-bind:grid="true"></Navcard>
 
-    <Card v-for="card in this.$store.state.articles"
+    <Card v-for="card in this.$store.state.posts"
       v-bind:key="card.id"
       v-bind:card="card">
     </Card>
@@ -26,7 +26,7 @@ export default {
   async created() {
 
     await this.$store.dispatch('loadPages')
-    await this.$store.dispatch('loadArticles')
+    await this.$store.dispatch('loadPosts')
   }
 }
 </script>

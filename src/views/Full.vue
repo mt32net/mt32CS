@@ -1,15 +1,20 @@
 <template>
   <div id="contdiv2">
     <!-- The Full View -->
-    <Navcard></Navcard>
-
+    <div class="contdivNotMenuExposed">
+      <div class="side">
+        <Navcard menuExposed="false" v-bind:grid="false"></Navcard>
+        <div class="underside">
+          <h2>comments</h2>
+        </div>
+      </div>
       <div class="contentcard2">
         <div class="contentcardinner2">
           <div class="cardup2">
-            <div><div class="cardheader2" v-html="page.title"></div><div class="cardcontent2" v-html="page.content"></div></div>
+            <div><div class="cardheader2" v-html="page.article.title"></div><div class="cardcontent2" v-html="page.article.content"></div></div>
           </div>
           <div class="carddown2">
-
+              <div class="tags2"><div class="tag2" v-bind:key="tag.id" v-for="tag in page.tags">#{{ tag.name }}</div></div>
           </div>
         </div>
       </div>
@@ -19,15 +24,14 @@
 
         </div>
       </div>
-
+    </div>
   </div>
 </template>
 
 <script>
 import Navcard from '../components/Navcard.vue'
 
-import apollo from '../apolloClient'
-import gql from 'graphql-tag'
+import api from '../api.js'
 
 export default {
 
@@ -40,75 +44,53 @@ export default {
 
     page: {
 
-      title: 'DEBUG',
-      content: 'DEBUG'
+      article: {
+        title: '',
+        content: ''
+      }
     }
 
   }},
   async created() {
 
-    if (this.$router.currentRoute.name == 'article') {
-
-      const response = await apollo.query({
-
-        query: gql`
-        query GetArticle($id: ID!){
-          article(id: $id) {
-            title,
-            content
-          }
-        }
-        `,
-        variables: {
-          id: this.$route.params.id
-        }
-      })
-
-      this.page = response.data.article;
+    await this.$store.dispatch('loadPages')
+    const id = this.$route.params.id
+    if (this.$router.currentRoute.name == 'post') {
+      this.page = await api.getPost(id)
 
     } else {
-
-      const response = await apollo.query({
-
-        query: gql`
-        query GetPage($id: ID!){
-          page(id: $id) {
-            title,
-            content
-          }
-        }
-        `,
-        variables: {
-          id: this.$route.params.id
-        }
-      })
-
-      this.page = response.data.page;
+      this.page = await api.getPage(id)
     }
   }
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../src/config.less';
 
 #contdiv2 {
 
-    display: grid;
+  border-radius: 20px;
 
-    border-radius: 20px;
-
-    background-color: @cl-contentdiv;
-  }
+  background-color: @cl-contentdiv;
+}
   .contdivNotMenuExposed {
 
-    grid-template-columns: 93.5px calc(100% - 93.5px);
+    display: grid;
+    grid-template-columns: 300px auto;
   }
+    .side {
 
-  .contdivMenuExposed {
+        display: inline-grid;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+      .underside {
 
-    grid-template-columns: 15% 85%;
-  }
+        display: block;
+        padding: 7px;
+        color: black;
+      }
     .contentcard2 {
 
       display: inline-grid;

@@ -20,8 +20,8 @@ export default new Router({
       component: Full
     },
     {
-      path: '/article/:id',
-      name: 'article',
+      path: '/post/:id',
+      name: 'post',
       component: Full
     }
   ]

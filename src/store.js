@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import apollo from './apolloClient'
-import gql from 'graphql-tag'
+import api from './api.js'
 
 Vue.use(Vuex)
 
@@ -11,15 +10,15 @@ export default new Vuex.Store({
 
     menuExposed: true,
     pages: [],
-    articles: []
+    posts: []
   },
   mutations: {
     updatePages(state, pages) {
       state.pages = pages;
     },
-    updateArticles(state, articles) {
+    updatePosts(state, posts) {
 
-      state.articles = articles;
+      state.posts = posts;
     },
     toggleMenuExposure(state) {
 
@@ -31,37 +30,11 @@ export default new Vuex.Store({
 
     async loadPages (context) {
 
-      const response = await apollo.query({
-
-        query: gql`
-        query {
-          pages {
-            id
-            title
-            icon
-          }
-        }
-        `
-      })
-
-      context.commit('updatePages', response.data.pages)
+      context.commit('updatePages', await api.getAllPages())
     },
-    async loadArticles (context) {
+    async loadPosts (context) {
 
-      const response = await apollo.query({
-
-        query: gql`
-        query {
-          articles {
-            id,
-            title,
-            content
-          }
-        }
-        `
-      })
-
-      context.commit('updateArticles', response.data.articles)
+      context.commit('updatePosts', await api.getAllPosts())
     }
   }
 })

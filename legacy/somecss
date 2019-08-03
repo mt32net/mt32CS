@@ -1,45 +1,4 @@
-<template>
-    <div class="contentcard">
-      <div class="contentcardinner">
-
-        <div class="cardup">
-          <div>
-            <div class="cardheader"
-                 v-on:click="setArticle(card)">
-                    {{ card.article.title }}
-            </div>
-            <div class="cardcontent" v-html="card.article.content"></div>
-          </div>
-        </div>
-
-        <div class="cardbottom">
-          <div class="tags"><div class="tag" v-bind:key="tag.id" v-for="tag in card.tags">#{{ tag.name }}</div></div>
-          <div class="item"></div>
-        </div>
-
-      </div>
-    </div>
-</template>
-
-<script>
-export default {
-
-  name: 'Card',
-  props: ['card'],
-  methods: {
-
-    setArticle: function(page) {
-
-        this.$router.push({ name: 'post', params: { id : page.id } })
-    }
-  }
-}
-</script>
-
-<style lang="less">
-@import '../../src/config.less';
-
-    .contentcard {
+   .contentcard {
 
       display: inline-grid;
 
@@ -69,7 +28,6 @@ export default {
 
             font-size: 160%;
             text-decoration: underline;
-            margin-bottom: 10px;
           }
           .cardheader:hover {
 
@@ -79,7 +37,7 @@ export default {
           .cardcontent {
 
             overflow: hidden;
-            max-height: 200px;
+            max-height: 300px;
           }
 
         .cardbottom {
@@ -103,4 +61,3 @@ export default {
 
               border-radius: 100px;
             }
-</style>
