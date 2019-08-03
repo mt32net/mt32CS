@@ -2,7 +2,7 @@
   <header id="header">
     <div id="headdiv">
       <div id="hederup">
-        <a id="title">mt32.net</a>
+        <router-link to="/" id="title">mt32.net</router-link>
           <div class="as" v-if="!loggedin">
             <input rows="1" class="headerform" placeholder="Email" v-model="bindedEmail">
             <input type="password" rows="1" class="headerform" placeholder="Password" v-model="bindedPassword">
@@ -78,6 +78,9 @@ export default {
       font-size: 200%;
       float: left;
       margin: 30px;
+    }
+    #title:hover {
+      text-decoration: none;
     }
     .as {
 
