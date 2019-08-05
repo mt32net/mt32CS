@@ -4,8 +4,6 @@
     <div class="contdivNotMenuExposed">
       <div class="side">
         <Navcard menuExposed="false" v-bind:grid="false"></Navcard>
-        <div class="underside">
-        </div>
       </div>
       <div class="contentcard2">
         <div class="contentcardinner2">
@@ -18,9 +16,13 @@
         </div>
       </div>
 
-      <div class="contentcard2 comments">
+      <div class="comments">
         <div class="contentcardinner2">
-
+          <Comment class="underside"
+            v-for="comment in page.comments"
+            v-bind:key="comment.key"
+            v-bind:comment="comment">
+          </Comment>
         </div>
       </div>
     </div>
@@ -29,6 +31,7 @@
 
 <script>
 import Navcard from '../components/Navcard.vue'
+import Comment from '../components/Comment.vue'
 
 import api from '../api.js'
 
@@ -37,7 +40,8 @@ export default {
   name: 'Full',
   components: {
 
-    Navcard
+    Navcard,
+    Comment
   },
   data: function () { return {
 
@@ -102,6 +106,10 @@ export default {
         padding: 7px;
         color: black;
       }
+    .comments {
+
+      padding: 7px;
+    }
     .contentcard2 {
 
       display: inline-grid;

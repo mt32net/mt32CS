@@ -15,6 +15,14 @@ export default {
                 tags {
                   id,
                   name
+                },
+                comments {
+                  id,
+                  content,
+                  author {
+                    name
+                  },
+                  createdAt
                 }
               }
             }
