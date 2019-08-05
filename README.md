@@ -29,7 +29,7 @@ It's not easy to find a matching and properly functioning CMS.
 
 You have to decide for a backend, that features an GraphQL API. But you can/must also change the code to make it compatible.
 
-Maybe I will release another piece of software related to the mt32.net project, that handles this problem.
+Maybe I will release another piece of software related to the mt32.net project, that handles this problem(already in development).
 
 ## Installation
 
