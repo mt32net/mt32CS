@@ -11,22 +11,7 @@ export default new Vuex.Store({
     menuExposed: true,
     pages: [],
     posts: [],
-    // Not in use
-    currentArticle: {
-      id: 0,
-      article: {
-        title: '',
-        content: ''
-      },
-      tags: [
-        {
-          name: ''
-        },
-        {
-          name: ''
-        }
-      ]
-    }
+    token: ""
   },
   mutations: {
     updatePages(state, pages) {
@@ -40,6 +25,9 @@ export default new Vuex.Store({
 
       if (state.menuExposed) state.menuExposed = false;
       else state.menuExposed = true;
+    },
+    updateToken(state, token) {
+      state.token = token;
     }
   },
   actions: {
