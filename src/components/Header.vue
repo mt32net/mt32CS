@@ -27,6 +27,8 @@
 </template>
 
 <script>
+import api from '../api'
+
 export default {
   name: 'Header',
   data: function () { return {
@@ -43,8 +45,14 @@ export default {
 
     login: function() {
 
-      this.loggedin = true;
-
+      api.login(this.bindedEmail, this.bindedPassword)
+      .then((data) => {
+        this.$store.commit('updateToken', data)
+        this.loggedin = true;
+      })
+      .catch((error) => {
+        window.alert(error)
+      })
     },
     logout: function() {
 

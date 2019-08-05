@@ -24,18 +24,19 @@ export default {
             }
         })  
         
-        return response.data.Post;
+        return response.data.post;
     },
     async getPage(id) {
         const response = await apollo.query({
 
             query: gql`
             query Page($id: ID!){
-              Page(id: $id) {
+              page(id: $id) {
                 article {
                   content,
                   title
-                }
+                },
+                icon
               }
             }
             `,
@@ -89,9 +90,9 @@ export default {
       return response.data.posts;
     },
     async signup(username, email, password) {
-      const response = await apollo.query({
+      const response = await apollo.mutate({
 
-          query: gql`
+          mutation: gql`
             mutation Signup(
                 $username: String!,
                 $email: String!,
@@ -118,9 +119,9 @@ export default {
   },
   
   async login(email, password) {
-    const response = await apollo.query({
-
-      query: gql`
+    const response = await apollo.mutate({
+      
+      mutation: gql`
         mutation Login(
           $email: String!,
           $password: String!
