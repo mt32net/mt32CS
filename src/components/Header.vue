@@ -3,19 +3,25 @@
     <div id="headdiv">
       <div id="hederup">
         <router-link to="/" id="title">mt32.net</router-link>
-          <div class="as" v-if="!loggedin">
-            <input rows="1" class="headerform" placeholder="Email" v-model="bindedEmail">
-            <input type="password" rows="1" class="headerform" placeholder="Password" v-model="bindedPassword">
+          <div class="as" v-if="!loggedin && !singupmode">
+            <input rows="1" class="headerform" placeholder="email" v-model="bindedEmail">
+            <input type="password" rows="1" class="headerform" placeholder="password" v-model="bindedPassword">
             <input type="submit" value="LOGIN" class="headerform" v-on:click="login">
-            <a href="http://mtorials.de" class="a">REGISTER</a>
+            <button class="a" v-on:click="toggleSingup">signup</button>
+          </div>
+          <div class="as" v-if="singupmode">
+            <input rows="1" class="headerform" placeholder="email" v-model="bindedEmail">
+            <input rows="1" class="headerform" placeholder="username" v-model="bindedUsername">
+            <input type="password" rows="1" class="headerform" placeholder="password" v-model="bindedPassword">
+            <input type="submit" value="SINGUP" class="headerform" v-on:click="singup">
+            <button class="a" v-on:click="toggleSingup">login</button>
           </div>
           <div class="as" v-if="loggedin">
             <input type="submit" value="LOGOUT" class="headerform" v-on:click="logout">
             <a class="a"></a>
-            <a href="/directus/public/admin" target="_blank" class="a">ACP</a>
+            <a href="" target="_blank" class="a">ACP</a>
           </div>
       </div>
-
 
       <div id="headerdown">
         <a></a>
@@ -37,11 +43,19 @@ export default {
     loggedin: false,
     user: null,
 
+    singupmode: false,
+
     bindedEmail: '',
-    bindedPassword: ''
+    bindedPassword: '',
+    bindedUsername: ''
 
   }},
   methods: {
+
+    toggleSingup: function() {
+      if (this.singupmode) this.singupmode = false
+      else this.singupmode = true
+    },
 
     login: function() {
 
@@ -57,6 +71,18 @@ export default {
     logout: function() {
 
       this.loggedin = false;
+      this.$store.commit('updateToken', "")
+    },
+
+    singup: function() {
+
+      api.signup(this.bindedUsername, this.bindedEmail, this.bindedPassword)
+      .then((data) => {
+        window.alert("New user " + data + " registered.")
+      })
+      .catch((error) => {
+        window.alert(error)
+      })
     }
   }
 }
@@ -100,6 +126,11 @@ export default {
 
         margin-right: 2%;
         float: left;
+
+        outline: none;
+        background: none;
+        border: none;
+        color: white;
 
         text-decoration-line: underline;
       }
