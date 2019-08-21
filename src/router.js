@@ -5,14 +5,17 @@ import Full from './views/Full.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router =  new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
       path: '/',
       name: 'home',
-      component: Grid
+      component: Grid,
+      meta: {
+        title: 'Home'
+      }
     },
     {
       path: '/page/:id',
@@ -26,3 +29,13 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  /* It will change the title when the router is change*/
+  if (to.meta.title) {
+    document.title = to.meta.title + ' | mt32.net';
+  }
+  next()
+})
+
+export default router

@@ -68,7 +68,8 @@ export default {
   },
   async created() {
 
-    this.update();
+    await this.update();
+    document.title = this.page.article.title + " | mt32.net";
   },
   watch: {
 
