@@ -17,7 +17,8 @@
       </div>
 
       <div class="comments">
-        <div class="contentcardinner2">
+        <div class="commentsinner">
+          <comment-form></comment-form>
           <Comment class="underside"
             v-for="comment in page.comments"
             v-bind:key="comment.key"
@@ -32,6 +33,7 @@
 <script>
 import Navcard from '../components/Navcard.vue'
 import Comment from '../components/Comment.vue'
+import CommentForm from '../components/CommentForm.vue'
 
 import api from '../api.js'
 
@@ -41,7 +43,8 @@ export default {
   components: {
 
     Navcard,
-    Comment
+    Comment,
+    CommentForm
   },
   data: function () { return {
 
@@ -89,6 +92,7 @@ export default {
   border-radius: 20px;
 
   background-color: @cl-contentdiv;
+  height: auto;
 }
   .contdivNotMenuExposed {
 
@@ -103,14 +107,23 @@ export default {
     }
       .underside {
 
-        display: block;
         padding: 7px;
         color: black;
       }
     .comments {
 
+      display: inline-grid;
+
       padding: 7px;
     }
+      .commentsinner {
+        
+        border-radius: 7px;
+
+        padding: 30px 30px 20px 30px;
+
+        background-color: @cl-cards;
+      }
     .contentcard2 {
 
       display: inline-grid;
