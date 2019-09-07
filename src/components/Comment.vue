@@ -15,10 +15,7 @@
 export default {
 
   name: 'comment',
-  props: ['comment'],
-  methods: {
-
-  }
+  props: ['comment']
 }
 </script>
 
@@ -29,7 +26,7 @@ export default {
 
     display: grid;
     grid-template-rows: 100%;
-    grid-template-columns: 10% 90%;
+    grid-template-columns: 80px calc(100% - 80px);
 }
 
 .content {
@@ -47,11 +44,12 @@ export default {
     background-color: @cl-contentdiv;
 }
 .meta {
-    
+
     text-align: right;
+    padding-top: 5px;
+    padding-right: 7px;
     display: inline-grid;
     color: white;
-    width: 70px;
     grid-column-start: 1;
     grid-column-end: 2;
 }
