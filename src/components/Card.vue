@@ -4,9 +4,11 @@
 
         <div class="cardup">
           <div>
-            <div class="cardheader"
-                 v-on:click="setArticle(card)">
-                    {{ card.article.title }}
+            <div v-on:click="setArticle(card)" class="cardheading">
+              <a class="cardtitle">{{ card.article.title }}</a>
+              <a> by {{ card.author.name }}, {{ new Date(card.createdAt).toLocaleDateString('de-DE', this.$store.timeOptions) }}</a>
+              <br/>
+              <a>|-> read more</a>  
             </div>
             <div class="cardcontent" v-html="card.article.content"></div>
           </div>
@@ -65,7 +67,12 @@ export default {
           display: inline-grid;
         }
 
-          .cardheader {
+        .cardheading {
+
+          margin-bottom: 15px;
+        }
+
+          .cardtitle {
 
             font-size: 160%;
             text-decoration: underline;

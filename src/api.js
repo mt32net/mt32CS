@@ -90,7 +90,11 @@ export default {
                 tags {
                   name,
                   id
-                }            
+                },
+                createdAt,
+                author {
+                  name
+                }           
               }
             }
             `,

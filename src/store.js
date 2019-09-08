@@ -11,7 +11,8 @@ export default new Vuex.Store({
     menuExposed: true,
     pages: [],
     posts: [],
-    token: JSON.parse(localStorage.getItem('token'))
+    token: JSON.parse(localStorage.getItem('token')),
+    timeOptions: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' },
   },
   mutations: {
     updatePages(state, pages) {
