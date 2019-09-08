@@ -13,6 +13,9 @@ export default new Vuex.Store({
     posts: [],
     token: JSON.parse(localStorage.getItem('token')),
     timeOptions: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' },
+    me: {
+      name: ''
+    },
   },
   mutations: {
     updatePages(state, pages) {
@@ -31,7 +34,10 @@ export default new Vuex.Store({
       localStorage.setItem("token", JSON.stringify(token))
     },
     removeToken() {
-      localStorage.removeItem("token");
+      localStorage.removeItem("token")
+    },
+    updateMe(state, me) {
+      state.me = me
     }
   },
   actions: {

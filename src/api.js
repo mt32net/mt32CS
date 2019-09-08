@@ -164,7 +164,8 @@ export default {
           me {
             email,
             name,
-            id
+            id,
+            admin
           }
         }
       `

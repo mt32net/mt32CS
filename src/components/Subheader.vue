@@ -1,8 +1,7 @@
 <template>
   <div v-if="subheading" id="subheader">
     <div id="subheaderdiv">
-      <a class="linki">M'Torials</a>
-      <a class="linki">Universum</a>
+      <a class="linki">This is realy cool stuff! - M'Torials</a>
     </div>
   </div>
 

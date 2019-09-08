@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Grid from './views/Grid.vue'
 import Full from './views/Full.vue'
+import Panel from './views/Panel.vue'
 
 Vue.use(Router)
 
@@ -26,6 +27,11 @@ const router =  new Router({
       path: '/post/:id',
       name: 'post',
       component: Full
+    },
+    {
+      path: '/panel/',
+      name: 'panel',
+      component: Panel
     }
   ]
 })

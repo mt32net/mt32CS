@@ -2,7 +2,7 @@
   <!-- The gridded Viwe -->
   <div id="contdiv">
 
-    <Navcard v-bind:menuExposed="true" v-bind:grid="true"></Navcard>
+    <Navcard v-bind:pages="this.$store.state.pages" v-bind:menuExposed="true" v-bind:grid="true"></Navcard>
 
     <Card v-for="card in this.$store.state.posts"
       v-bind:key="card.id"

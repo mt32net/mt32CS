@@ -16,7 +16,7 @@
             <div><input type="submit" value="SEARCH" id="searchbtn"></div>
           </div>
 
-          <Menupoint v-for="apoint in this.$store.state.pages"
+          <Menupoint v-for="apoint in pages"
                      v-bind:point="apoint"
                      v-bind:key="apoint.id"
                      v-on:click.native="showPage(apoint)"
@@ -33,7 +33,7 @@ import Menupoint from '../components/Menupoint.vue'
 
 export default {
   name: 'Navcard',
-  props: ['menuExposed', 'grid'],
+  props: ['pages', 'menuExposed', 'grid'],
   data: function () { return {
 
     pointMenu: {

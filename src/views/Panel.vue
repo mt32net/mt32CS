@@ -3,8 +3,19 @@
     <!-- The Full View -->
     <div class="contdivNotMenuExposed">
       <div class="side">
-        <Navcard v-bind:pages="this.$store.state.pages" menuExposed="false" v-bind:grid="false"></Navcard>
+        <Navcard v-bind:pages="pages" menuExposed="false" v-bind:grid="false"></Navcard>
       </div>
+
+      <div class="contentcard2">
+        <div class="contentcardinner2">
+					<div>
+						<input type="text" v-model="page.article.title" placeholder="title" class="form">
+						<vue-simplemde style="background-color: white; border-radius: 7px;" v-model="page.article.content" ref="markdownEditor" />
+						<input type="submit" value="Post" class="form">
+					</div>
+        </div>
+      </div>
+
       <div class="contentcard2">
         <div class="contentcardinner2">
           <div class="cardup2">
@@ -13,7 +24,7 @@
                 <a class="cardheader2">{{ page.article.title }}</a>
                 <a class="author" v-if="isPost"> by <i>{{ page.author.name }}, {{ date.toLocaleDateString('de-DE', date) }}</i></a>
               </div>
-              <div class="cardcontent2" v-html="page.article.content"></div>
+              <vue-markdown class="contentcard2" v-bind:source="page.article.content"></vue-markdown>
             </div>
           </div>
           <div class="carddown2">
@@ -22,36 +33,24 @@
         </div>
       </div>
 
-      <div class="comments" v-if="isPost">
-        <div class="commentsinner">
-          <comment-form v-bind:postid="page.id" v-if="loggedin"></comment-form>
-          <div v-else>Please sign in to write a comment</div>
-          <Comment class="underside"
-            v-for="comment in page.comments"
-            v-bind:key="comment.key"
-            v-bind:comment="comment">
-          </Comment>
-        </div>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Navcard from '../components/Navcard.vue'
-import Comment from '../components/Comment.vue'
-import CommentForm from '../components/CommentForm.vue'
 
-import api from '../api.js'
+import VueSimplemde from 'vue-simplemde'
+import VueMarkdown from 'vue-markdown'
 
 export default {
 
   name: 'Full',
   components: {
 
-    Navcard,
-    Comment,
-    CommentForm
+		Navcard,
+		VueSimplemde,
+		VueMarkdown
   },
   data: function () { return {
 
@@ -64,7 +63,10 @@ export default {
       author: {
         name: ''
       }
-    },
+		},
+		pages: {
+
+		},
     options: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' },
     date: new Date('0001-01-01'),
     isPost: false,
@@ -72,36 +74,14 @@ export default {
 
   }},
   methods: {
-    update: async function () {
-      await this.$store.dispatch('loadPages')
-      const id = this.$route.params.id
-      if (this.$router.currentRoute.name == 'post') {
-        this.page = await api.getPost(id)
-        this.isPost = true
 
-      } else {
-        this.page = await api.getPage(id)
-      }
-    }
-  },
-  async created() {
-
-    await this.update();
-    document.title = this.page.article.title + " | mt32.net";
-    this.date = new Date(this.page.createdAt)
-  },
-  watch: {
-
-    '$route' () {
-
-      this.update();
-    }
-  }
+	}
 }
 </script>
 
 <style lang="less" scoped>
 @import '../../src/config.less';
+@import '~simplemde/dist/simplemde.min.css';
 
 #contdiv2 {
 
@@ -200,5 +180,21 @@ export default {
               padding-left: 5px;
 
               border-radius: 100px;
-            }
+						}
+			.form {
+
+        text-decoration: none;
+        border-style: none;
+        background-color: @cl-acc;
+        outline: none;
+        resize: none;
+        border-radius: 100px;
+
+        padding-left: 7px;
+        padding-bottom: 2px;
+        padding-top: 2px;
+
+				margin-bottom: 7px;
+				margin-top: 7px;
+      }
 </style>

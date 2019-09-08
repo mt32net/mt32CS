@@ -17,9 +17,9 @@
             <button class="a" v-on:click="toggleSingup">login</button>
           </form>
           <form class="as" v-if="loggedin">
+            <a class="a">logged in as <i>{{ this.$store.state.me.name }}</i></a>
+            <router-link to="/panel" class="a">panel</router-link>
             <input type="submit" value="LOGOUT" class="headerform" v-on:click="logout">
-            <a class="a"></a>
-            <a href="" target="_blank" class="a">ACP</a>
           </form>
       </div>
     </div>
@@ -76,6 +76,11 @@ export default {
         window.alert(error)
       })
     }
+  },
+  async created() {
+
+      var me = await api.getMe()
+      this.$store.commit('updateMe', me)
   }
 }
 </script>
@@ -125,8 +130,6 @@ export default {
         background: none;
         border: none;
         color: white;
-
-        text-decoration-line: underline;
       }
       .headerform {
 
