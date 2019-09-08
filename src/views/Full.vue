@@ -13,7 +13,7 @@
                 <a class="cardheader2">{{ page.article.title }}</a>
                 <a class="author" v-if="isPost"> by <i>{{ page.author.name }}, {{ date.toLocaleDateString('de-DE', date) }}</i></a>
               </div>
-              <div class="cardcontent2" v-html="page.article.content"></div>
+              <vue-markdown class="contentcard2" v-bind:source="page.article.content"></vue-markdown>
             </div>
           </div>
           <div class="carddown2">
@@ -44,6 +44,8 @@ import CommentForm from '../components/CommentForm.vue'
 
 import api from '../api.js'
 
+import VueMarkdown from 'vue-markdown'
+
 export default {
 
   name: 'Full',
@@ -51,7 +53,8 @@ export default {
 
     Navcard,
     Comment,
-    CommentForm
+    CommentForm,
+  	VueMarkdown
   },
   data: function () { return {
 

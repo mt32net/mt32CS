@@ -165,7 +165,7 @@ export default {
             email,
             name,
             id,
-            admin
+            creator
           }
         }
       `
@@ -189,6 +189,53 @@ export default {
       variables: {
         postid,
         content
+      }
+    })
+    return response.data.id;
+  },
+
+  async createDraft(content, title) {
+    const response = await apollo.mutate({
+      
+      mutation: gql`
+        mutation createDraft(
+          $content: String!,
+          $title: String!
+        ){
+          createDraft(
+            content: $content,
+            title: $title
+          ) {
+            id
+          }
+        }
+      `,
+      variables: {
+        title,
+        content
+      }
+    })
+    return response.data.createDraft.id;
+  },
+
+  async publish(id) {
+    const response = await apollo.mutate({
+      
+      mutation: gql`
+        mutation publish(
+          $id: ID!
+        ){
+          publish(
+            id: $id
+          ) {
+            article {
+              title
+            }
+          }
+        }
+      `,
+      variables: {
+        id: id
       }
     })
     return response.data.id;

@@ -10,8 +10,8 @@
         <div class="contentcardinner2">
 					<div>
 						<input type="text" v-model="page.article.title" placeholder="title" class="form">
-						<vue-simplemde style="background-color: white; border-radius: 7px;" v-model="page.article.content" ref="markdownEditor" />
-						<input type="submit" value="Post" class="form">
+						<vue-simplemde style="background-color: white; border-radius: 7px; color: black;" v-model="page.article.content" ref="markdownEditor" />
+						<input type="submit" value="Post" class="form" v-on:click="post">
 					</div>
         </div>
       </div>
@@ -42,6 +42,8 @@ import Navcard from '../components/Navcard.vue'
 
 import VueSimplemde from 'vue-simplemde'
 import VueMarkdown from 'vue-markdown'
+
+import api from '../api.js'
 
 export default {
 
@@ -75,6 +77,11 @@ export default {
   }},
   methods: {
 
+    post: async function() {
+      var isNew = await api.createDraft(this.page.article.content, this.page.article.title)
+      api.publish(isNew);
+      location.reload()
+    }
 	}
 }
 </script>
