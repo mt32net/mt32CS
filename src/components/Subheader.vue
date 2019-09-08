@@ -1,6 +1,8 @@
 <template>
   <div v-if="subheading" id="subheader">
     <div id="subheaderdiv">
+      <a class="linki">M'Torials</a>
+      <a class="linki">Universum</a>
     </div>
   </div>
 
@@ -18,6 +20,9 @@ export default {
 </script>
 
 <style lang="less">
+
+@import '../../src/config.less';
+
   #subheader {
 
     display: inline-grid;
@@ -28,6 +33,18 @@ export default {
       border-radius: 20px;
 
       background-image: url("/../../assets/trianglify.svg");
+
+      text-align: center;
+
+      line-height: 1000%;
+    }
+
+    .linki {
+      
+      margin: 10px;
+      background-color: @cl-acc;
+      padding: 3px;
+      border-radius: 7px;
     }
 
   #spacer {
@@ -35,5 +52,5 @@ export default {
   display: inline-grid;
   grid-column: 1 / span 3;
 
-}
+  }
 </style>

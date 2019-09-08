@@ -2,7 +2,8 @@
   <header id="header">
     <div id="headdiv">
       <div id="hederup">
-        <router-link to="/" id="title">mt32.net</router-link>
+        <router-link to="/" id="title" class="headertext">mt32.net</router-link>
+
           <div class="as" v-if="!loggedin && !singupmode">
             <input rows="1" class="headerform" placeholder="email" v-model="bindedEmail">
             <input type="password" rows="1" class="headerform" placeholder="password" v-model="bindedPassword">
@@ -24,7 +25,6 @@
       </div>
 
       <div id="headerdown">
-        <a></a>
         <!--<a href="http://photonmsg.com"><img id="logo2" src="logos/photonblue.png"></a>-->
         <!--<a href="http://universegame.com"><img id="logo1" src="logos/universeiconpng.png"></a>-->
       </div>
@@ -107,11 +107,15 @@ export default {
 
     background-color: @cl-bg;
   }
+
+    .headertext {
+
+      float: left;
+      margin: 30px;
+    }
     #title {
 
       font-size: 200%;
-      float: left;
-      margin: 30px;
     }
     #title:hover {
       text-decoration: none;
