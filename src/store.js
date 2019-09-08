@@ -11,7 +11,7 @@ export default new Vuex.Store({
     menuExposed: true,
     pages: [],
     posts: [],
-    token: JSON.parse(localStorage.getItem('token') || "{}")
+    token: JSON.parse(localStorage.getItem('token'))
   },
   mutations: {
     updatePages(state, pages) {

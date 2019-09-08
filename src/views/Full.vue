@@ -66,7 +66,7 @@ export default {
       }
     },
     isPost: false,
-    loggedin: this.$store.state.token != undefined
+    loggedin: this.$store.state.token != null
 
   }},
   methods: {

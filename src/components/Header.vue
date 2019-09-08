@@ -17,11 +17,11 @@
             <input type="submit" value="SINGUP" class="headerform" v-on:click="singup">
             <button class="a" v-on:click="toggleSingup">login</button>
           </form>
-          <form class="as" v-if="loggedin">
+          <div class="as" v-if="loggedin">
             <input type="submit" value="LOGOUT" class="headerform" v-on:click="logout">
             <a class="a"></a>
             <a href="" target="_blank" class="a">ACP</a>
-          </form>
+          </div>
       </div>
 
       <div id="headerdown">
@@ -40,7 +40,7 @@ export default {
   data: function () { return {
 
     subheading: true,
-    loggedin: this.$store.state.token != undefined,
+    loggedin: this.$store.state.token != null,
     user: null,
 
     singupmode: false,
