@@ -9,10 +9,13 @@
   },
   "dependencies": {
     "apollo-boost": "^0.3.1",
+    "apollo-link-context": "^1.0.19",
     "core-js": "^2.6.9",
+    "js-cookie": "^2.2.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.7",
-    "vuex": "^3.1.1"
+    "vuex": "^3.1.1",
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.6.0",

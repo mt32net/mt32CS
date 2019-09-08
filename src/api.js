@@ -8,6 +8,7 @@ export default {
             query: gql`
             query post($id: ID!){
               post(id: $id) {
+                id,
                 article {
                   title,
                   content
@@ -164,5 +165,26 @@ export default {
       `
     })
     return response.data.me;
+  },
+
+  async comment(postid, content) {
+    const response = await apollo.mutate({
+      
+      mutation: gql`
+        mutation createComment(
+          $postid: ID!,
+          $content: String!
+        ){
+          createComment(postid: $postid, content: $content) {
+            id
+          }
+        }
+      `,
+      variables: {
+        postid,
+        content
+      }
+    })
+    return response.data.id;
   }
 }

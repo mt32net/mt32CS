@@ -8,7 +8,7 @@ import apollo from './apolloClient'
 Vue.config.productionTip = false
 Vue.prototype.$apollo = apollo
 
-new Vue({
+export default new Vue({
   router,
   store,
   render: h => h(App)

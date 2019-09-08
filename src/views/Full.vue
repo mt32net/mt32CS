@@ -22,9 +22,10 @@
         </div>
       </div>
 
-      <div class="comments">
+      <div class="comments" v-if="isPost">
         <div class="commentsinner">
-          <comment-form></comment-form>
+          <comment-form v-bind:postid="page.id" v-if="loggedin"></comment-form>
+          <div v-else>Please sign in to write a comment</div>
           <Comment class="underside"
             v-for="comment in page.comments"
             v-bind:key="comment.key"
@@ -55,6 +56,7 @@ export default {
   data: function () { return {
 
     page: {
+      id: '',
       article: {
         title: '',
         content: ''
@@ -63,7 +65,8 @@ export default {
         name: ''
       }
     },
-    isPost: false
+    isPost: false,
+    loggedin: this.$store.state.token != undefined
 
   }},
   methods: {

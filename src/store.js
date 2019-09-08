@@ -11,7 +11,7 @@ export default new Vuex.Store({
     menuExposed: true,
     pages: [],
     posts: [],
-    token: ""
+    token: JSON.parse(localStorage.getItem('token') || "{}")
   },
   mutations: {
     updatePages(state, pages) {
@@ -27,7 +27,10 @@ export default new Vuex.Store({
       else state.menuExposed = true;
     },
     updateToken(state, token) {
-      state.token = token;
+      localStorage.setItem("token", JSON.stringify(token))
+    },
+    removeToken() {
+      localStorage.removeItem("token");
     }
   },
   actions: {

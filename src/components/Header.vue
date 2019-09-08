@@ -10,18 +10,18 @@
             <input type="submit" value="LOGIN" class="headerform" v-on:click="login">
             <button class="a" v-on:click="toggleSingup">signup</button>
           </div>
-          <div class="as" v-if="singupmode">
+          <form class="as" v-if="singupmode">
             <input rows="1" class="headerform" placeholder="email" v-model="bindedEmail">
             <input rows="1" class="headerform" placeholder="username" v-model="bindedUsername">
             <input type="password" rows="1" class="headerform" placeholder="password" v-model="bindedPassword">
             <input type="submit" value="SINGUP" class="headerform" v-on:click="singup">
             <button class="a" v-on:click="toggleSingup">login</button>
-          </div>
-          <div class="as" v-if="loggedin">
+          </form>
+          <form class="as" v-if="loggedin">
             <input type="submit" value="LOGOUT" class="headerform" v-on:click="logout">
             <a class="a"></a>
             <a href="" target="_blank" class="a">ACP</a>
-          </div>
+          </form>
       </div>
 
       <div id="headerdown">
@@ -40,7 +40,7 @@ export default {
   data: function () { return {
 
     subheading: true,
-    loggedin: false,
+    loggedin: this.$store.state.token != undefined,
     user: null,
 
     singupmode: false,
@@ -71,7 +71,7 @@ export default {
     logout: function() {
 
       this.loggedin = false;
-      this.$store.commit('updateToken', "")
+      this.$store.commit('removeToken')
     },
 
     singup: function() {

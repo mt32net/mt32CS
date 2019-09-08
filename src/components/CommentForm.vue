@@ -1,17 +1,27 @@
 <template>
     <div class="comment">
         <form>
-            <input type="text" class="text" placeholder="write a comment">
-            <input type="button" class="button" value="SEND">
+            <input type="text" class="text" v-model="bindContent" placeholder="write a comment">
+            <input type="submit" class="button" value="SEND" @click="createComment()">
         </form>
     </div>    
 </template>
 
 <script>
-export default {
+import api from '../api.js'
 
+export default {
+ 
   name: 'commentform',
-  props: ['']
+  props: ['postid'],
+  data: function() { return {
+    bindContent: ''
+  }},
+  methods: {
+    createComment: function() {
+        api.comment(this.postid, this.bindContent);
+    }
+  }
 }
 </script>
 
@@ -22,7 +32,7 @@ export default {
 
     display: block;
     background-color: @cl-contentdiv;
-    height: 70px;
+    height: 40px;
     border-radius: 7px;
     margin-bottom: 20px;
     margin-right: 14px;
