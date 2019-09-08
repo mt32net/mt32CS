@@ -11,7 +11,7 @@
             <div>
               <div>
                 <a class="cardheader2">{{ page.article.title }}</a>
-                <a class="author"> by <i>{{ page.author.name }}</i></a>
+                <a class="author" v-if="isPost"> by <i>{{ page.author.name }}</i></a>
               </div>
               <div class="cardcontent2" v-html="page.article.content"></div>
             </div>
@@ -62,7 +62,8 @@ export default {
       author: {
         name: ''
       }
-    }
+    },
+    isPost: false
 
   }},
   methods: {
@@ -71,6 +72,7 @@ export default {
       const id = this.$route.params.id
       if (this.$router.currentRoute.name == 'post') {
         this.page = await api.getPost(id)
+        this.isPost = true
 
       } else {
         this.page = await api.getPage(id)
