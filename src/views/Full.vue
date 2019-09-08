@@ -8,7 +8,13 @@
       <div class="contentcard2">
         <div class="contentcardinner2">
           <div class="cardup2">
-            <div><div class="cardheader2" v-html="page.article.title"></div><div class="cardcontent2" v-html="page.article.content"></div></div>
+            <div>
+              <div>
+                <a class="cardheader2">{{ page.article.title }}</a>
+                <a class="author"> by <i>{{ page.author.name }}</i></a>
+              </div>
+              <div class="cardcontent2" v-html="page.article.content"></div>
+            </div>
           </div>
           <div class="carddown2">
               <div class="tags2"><div class="tag2" v-bind:key="tag.id" v-for="tag in page.tags">#{{ tag.name }}</div></div>
@@ -49,10 +55,12 @@ export default {
   data: function () { return {
 
     page: {
-
       article: {
         title: '',
         content: ''
+      },
+      author: {
+        name: ''
       }
     }
 
@@ -154,6 +162,9 @@ export default {
 
             font-size: 160%;
             text-decoration: underline;
+          }
+          .author {
+            font-size: 100%;
           }
 
           .cardcontent2 {

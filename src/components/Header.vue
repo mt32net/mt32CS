@@ -146,8 +146,6 @@ export default {
         padding-left: 7px;
         padding-bottom: 2px;
         padding-top: 2px;
-
-        float: left;
         margin-right: 2%;
       }
 
