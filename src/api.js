@@ -8,6 +8,7 @@ export default {
             query: gql`
             query post($id: ID!){
               post(id: $id) {
+                createdAt,
                 id,
                 article {
                   title,

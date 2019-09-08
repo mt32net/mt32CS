@@ -11,7 +11,7 @@
             <div>
               <div>
                 <a class="cardheader2">{{ page.article.title }}</a>
-                <a class="author" v-if="isPost"> by <i>{{ page.author.name }}</i></a>
+                <a class="author" v-if="isPost"> by <i>{{ page.author.name }}, {{ date.toLocaleDateString('de-DE', date) }}</i></a>
               </div>
               <div class="cardcontent2" v-html="page.article.content"></div>
             </div>
@@ -65,6 +65,8 @@ export default {
         name: ''
       }
     },
+    options: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' },
+    date: new Date('0001-01-01'),
     isPost: false,
     loggedin: this.$store.state.token != null
 
@@ -86,6 +88,7 @@ export default {
 
     await this.update();
     document.title = this.page.article.title + " | mt32.net";
+    this.date = new Date(this.page.createdAt)
   },
   watch: {
 
