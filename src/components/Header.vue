@@ -1,11 +1,10 @@
 <template>
   <header id="header">
     <div id="headdiv">
-      <div id="hederup">
-        <router-link to="/" id="title" class="headertext">mt32.net</router-link>
-
+      <router-link to="/" id="title" class="headertext">mt32.net</router-link>
+      <div>
           <form class="as" v-if="!loggedin && !singupmode">
-            <input rows="1" class="headerform" placeholder="email" v-model="bindedEmail">
+            <input type="email" rows="1" class="headerform" placeholder="email" v-model="bindedEmail">
             <input type="password" rows="1" class="headerform" placeholder="password" v-model="bindedPassword">
             <input type="submit" value="LOGIN" class="headerform" v-on:click="login">
             <button class="a" v-on:click="toggleSingup">signup</button>
@@ -22,11 +21,6 @@
             <a class="a"></a>
             <a href="" target="_blank" class="a">ACP</a>
           </form>
-      </div>
-
-      <div id="headerdown">
-        <!--<a href="http://photonmsg.com"><img id="logo2" src="logos/photonblue.png"></a>-->
-        <!--<a href="http://universegame.com"><img id="logo1" src="logos/universeiconpng.png"></a>-->
       </div>
     </div>
   </header>
@@ -120,14 +114,12 @@ export default {
     }
     .as {
 
-      float: right;
-      width: 470px;
       margin: 15px;
+      text-align: right;
     }
       .a {
 
-        margin-right: 2%;
-        float: left;
+        margin-right: 7px;
 
         outline: none;
         background: none;
@@ -148,7 +140,8 @@ export default {
         padding-left: 7px;
         padding-bottom: 2px;
         padding-top: 2px;
-        margin-right: 2%;
+
+        margin-right: 7px;
       }
 
 </style>
