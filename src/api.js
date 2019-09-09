@@ -194,17 +194,19 @@ export default {
     return response.data.id;
   },
 
-  async createDraft(content, title) {
+  async createDraft(content, title, tags) {
     const response = await apollo.mutate({
       
       mutation: gql`
         mutation createDraft(
           $content: String!,
           $title: String!
+          $tags: [ID!]
         ){
           createDraft(
             content: $content,
-            title: $title
+            title: $title,
+            tags: $tags
           ) {
             id
           }
@@ -212,7 +214,8 @@ export default {
       `,
       variables: {
         title,
-        content
+        content,
+        tags
       }
     })
     return response.data.createDraft.id;
@@ -239,5 +242,41 @@ export default {
       }
     })
     return response.data.id;
+  },
+
+  async getTags() {
+    const response = await apollo.query({
+
+      query: gql`
+        query {
+          tags {
+            name,
+            id
+          }
+        }
+      `
+    })
+    return response.data.tags;
+  },
+
+  async createTag(name) {
+    const response = await apollo.mutate({
+      
+      mutation: gql`
+        mutation createTag(
+          $name: String!
+        ){
+          createTag(
+            name: $name,
+          ) {
+            id
+          }
+        }
+      `,
+      variables: {
+        name
+      }
+    })
+    return response.data.createTag.id;
   }
 }
