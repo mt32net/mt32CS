@@ -54,7 +54,7 @@ export default {
     Navcard,
     Comment,
     CommentForm,
-  	VueMarkdown
+    VueMarkdown
   },
   data: function () { return {
 
@@ -83,6 +83,7 @@ export default {
         this.isPost = true
 
       } else {
+        this.isPost = false;
         this.page = await api.getPage(id)
       }
     }

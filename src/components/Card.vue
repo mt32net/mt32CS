@@ -1,5 +1,5 @@
 <template>
-    <div class="contentcard">
+    <div class="contentcard" v-bind:class="{ small: !xwidth }">
       <div class="contentcardinner">
 
         <div class="cardup">
@@ -27,7 +27,7 @@
 export default {
 
   name: 'Card',
-  props: ['card'],
+  props: ['card', 'xwidth'],
   methods: {
 
     setArticle: function(page) {
@@ -44,9 +44,11 @@ export default {
     .contentcard {
 
       display: inline-grid;
-
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+    .small {
       padding: 10px;
-
     }
       .contentcardinner {
 

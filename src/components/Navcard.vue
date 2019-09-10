@@ -9,7 +9,10 @@
           </Menupoint>
 
           <div class="menulayer" v-if="menuExposed">
-            <div><input type="search" id="search"><input type="submit" value="SEARCH" id="searchbtn"></div>
+            <div>
+              <input type="search" id="search" v-model="q">
+              <input type="submit" value="SEARCH" id="searchbtn" @click="search">
+            </div>
           </div>
 
           <div class="menulayer" v-else>
@@ -42,7 +45,8 @@ export default {
         title: 'Menu'
       },
       icon: 'menu',
-    }
+    },
+    q: ''
 
   }},
   components: {
@@ -59,6 +63,9 @@ export default {
     btnMenu: function() {
 
       this.$store.commit('toggleMenuExposure')
+    },
+    search: function() {
+      this.$router.push({ name: 'search', params: { q: this.q } })
     }
   }
 }

@@ -278,5 +278,34 @@ export default {
       }
     })
     return response.data.createTag.id;
+  },
+
+  async filterPosts(searchString) {
+    const response = await apollo.query({
+      
+      query: gql`
+        query($searchString: String) {
+          filterPosts(searchString: $searchString) {
+            id,
+                article {
+                  content,
+                  title
+                },
+                tags {
+                  name,
+                  id
+                },
+                createdAt,
+                author {
+                  name
+                }  
+          }
+        }
+      `,
+      variables: {
+        searchString
+      }
+    })
+    return response.data.filterPosts;
   }
 }

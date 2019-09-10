@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Grid from './views/Grid.vue'
 import Full from './views/Full.vue'
+import Search from './views/Search.vue'
 import Panel from './views/Panel.vue'
 
 Vue.use(Router)
@@ -32,6 +33,11 @@ const router =  new Router({
       path: '/panel/',
       name: 'panel',
       component: Panel
+    },
+    {
+      path: '/search/:q',
+      name: 'search',
+      component: Search
     }
   ]
 })

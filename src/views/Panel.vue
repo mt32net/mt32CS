@@ -239,4 +239,6 @@ export default {
       .white {
         background-color: white;
       }
+
+      
 </style>
