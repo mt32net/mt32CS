@@ -78,9 +78,10 @@ export default {
     }
   },
   async created() {
-
+    if (this.loggedin) {
       var me = await api.getMe()
       this.$store.commit('updateMe', me)
+    }
   }
 }
 </script>
