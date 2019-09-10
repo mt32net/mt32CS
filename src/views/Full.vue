@@ -12,6 +12,8 @@
               <div>
                 <a class="cardheader2">{{ page.article.title }}</a>
                 <a class="author" v-if="isPost"> by <i>{{ page.author.name }}, {{ date.toLocaleDateString('de-DE', date) }}</i></a>
+                <br/><br/>
+                <a><i v-text="this.page.description"></i></a>
               </div>
               <vue-markdown class="contentcard2" v-bind:source="page.article.content"></vue-markdown>
             </div>
@@ -66,7 +68,8 @@ export default {
       },
       author: {
         name: ''
-      }
+      },
+      description: ''
     },
     options: { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' },
     date: new Date('0001-01-01'),

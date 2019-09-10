@@ -28,7 +28,8 @@ export default {
                 },
                 author {
                   name
-                }
+                },
+                description
               }
             }
             `,
@@ -84,7 +85,6 @@ export default {
               posts {
                 id,
                 article {
-                  content,
                   title
                 },
                 tags {
@@ -94,7 +94,8 @@ export default {
                 createdAt,
                 author {
                   name
-                }           
+                },
+                description  
               }
             }
             `,
@@ -194,28 +195,32 @@ export default {
     return response.data.id;
   },
 
-  async createDraft(content, title, tags) {
+  async createDraft(content, title, tags, description) {
     const response = await apollo.mutate({
       
       mutation: gql`
         mutation createDraft(
           $content: String!,
-          $title: String!
-          $tags: [ID!]
+          $title: String!,
+          $tags: [ID!],
+          $description: String!
         ){
           createDraft(
             content: $content,
             title: $title,
-            tags: $tags
+            tags: $tags,
+            description: $description
           ) {
-            id
+            id,
+            description
           }
         }
       `,
       variables: {
         title,
         content,
-        tags
+        tags,
+        description
       }
     })
     return response.data.createDraft.id;
@@ -298,7 +303,8 @@ export default {
                 createdAt,
                 author {
                   name
-                }  
+                },
+                description
           }
         }
       `,

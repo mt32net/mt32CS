@@ -9,7 +9,8 @@
       <div class="contentcard2">
         <div class="contentcardinner2">
 					<div>
-						<input type="text" v-model="page.article.title" placeholder="title" class="form">
+						<input type="text" v-model="page.article.title" placeholder="title" class="form"><br/>
+            <input type="text" v-model="page.description" placeholder="description" class="form" style="width: 100%;">
 						<vue-simplemde style="background-color: white; border-radius: 7px; color: black;" v-model="page.article.content" ref="markdownEditor" />
 						<input type="submit" value="Post" class="form" v-on:click="post"><br/>
             <a v-for="tag in this.tags" 
@@ -30,6 +31,8 @@
               <div>
                 <a class="cardheader2">{{ page.article.title }}</a>
                 <a class="author" v-if="isPost"> by <i>{{ page.author.name }}, {{ date.toLocaleDateString('de-DE', date) }}</i></a>
+                <br/><br/>
+                <a><i v-text="this.page.description"></i></a>
               </div>
               <vue-markdown class="contentcard2" v-bind:source="page.article.content"></vue-markdown>
             </div>
@@ -71,7 +74,8 @@ export default {
       },
       author: {
         name: ''
-      }
+      },
+      description: ''
     },
     pages: {},
 		tags: [],
@@ -91,7 +95,7 @@ export default {
       .filter(function (el) {
         return el != null;
       });
-      var isNew = await api.createDraft(this.page.article.content, this.page.article.title, tagIds)
+      var isNew = await api.createDraft(this.page.article.content, this.page.article.title, tagIds, this.page.description)
       api.publish(isNew);
       location.reload()
     },

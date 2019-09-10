@@ -10,7 +10,7 @@
               <br/>
               <a>|-> read more</a>  
             </div>
-            <div class="cardcontent" v-html="card.article.content"></div>
+            <div class="cardcontent" v-html="card.description"></div>
           </div>
         </div>
 
