@@ -4,12 +4,12 @@
     <div class="contdivNotMenuExposed">
       <div class="contentcard2">
         <div class="contentcardinner2">
-          <a class="cardheader2">Search</a>
-          <input v-model="newQ" type="search" class="form" style="height: 1.4rem; width: 100%;"><br/>
-          <input type="submit" class="form" value="SEARCH" @click="search">
+          <a class="cardheader2">Search</a><br/>
+          <input v-model="newQ" type="search" class="form" style="height: 1.4rem; width: 100%;">
+          <input type="submit" class="form" value="SEARCH" @click="search"><br/>
+          <a>{{ results.length }} results found!</a>
         </div>
         <div class="results">
-          <a v-if="results.length == 0" class="form">Sorry, no results found.</a>
           <Card v-for="card in results"
             v-bind:key="card.id"
             v-bind:card="card"
