@@ -54,10 +54,6 @@ You have to run all this commands in the project directory!
 #### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-## Support
-
-Contact me via Discord: ```M'Torials#2249```
-
 ## Credits and Dependencies
 
 See the package.json for a detailed list of dependencies, but special thanks to following projects:
