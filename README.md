@@ -14,17 +14,6 @@ This website is written out of personal need, but feel free to use it yourself o
 
 [GraphQL](https://graphql.org/) is an alternative to the common RESTful APIs. The big difference is: You get what you want, nothing more and nothing less. Because of these great advantage and some other cool stuff you can do with GraphQL I decided to choose it over REST.
 
-### A headless CMS
-
-I wanted to use a headless CMS togther with this frontend. Such a CMS features only an API and an admin interface, so it's easy to manage content for a website.
-
-My conditions are:
-* GraphQL API (of course)
-* self hosted/open source
-* stable
-
-It's not easy to find a matching and properly functioning CMS.
-
 ## How to use?
 
 You have to decide for a backend, that features a GraphQL API. But you can/must also change the code to make it compatible.
